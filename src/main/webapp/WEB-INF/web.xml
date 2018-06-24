@@ -31,26 +31,28 @@
 	</servlet-mapping>
 	
 	<filter>
-		<filter-name>CorsFilter</filter-name>
-		<filter-class>com.java.Spring_Server2.util.CORSFilter</filter-class>
-		</filter>
-		<filter-mapping>
-		<filter-name>CorsFilter</filter-name>
-		<url-pattern>*</url-pattern>
-	</filter-mapping>	
-		
-	<filter>
-	        <filter-name>encodingFilter</filter-name>
-	        <filter-class>
-	            org.springframework.web.filter.CharacterEncodingFilter
-	    </filter-class>
-	    <init-param>
-	            <param-name>encoding</param-name>
-	            <param-value>UTF-8</param-value>
-	    </init-param>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
-	        <filter-name>encodingFilter</filter-name>
-	        <url-pattern>/*</url-pattern>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	  <filter-name>CorsFilter</filter-name>
+	  <filter-class>kr.co.exam2.util.CORSFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  <filter-name>CorsFilter</filter-name>
+	  <url-pattern>*</url-pattern>
 	</filter-mapping>
 </web-app>

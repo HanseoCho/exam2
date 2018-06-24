@@ -14,29 +14,26 @@ import javax.servlet.http.HttpServletResponse;
 public class CORSFilter implements Filter {
 
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void init(FilterConfig filterConfig) throws ServletException {}
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletRresponse, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
-		HttpServletResponse resp = (HttpServletResponse) servletRresponse;
-		resp.addHeader("Access-Control-Allow-Origin","*");
-		resp.addHeader("Access-Control-Allow-Methods","GET,POST");
-		resp.addHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+//	    System.out.println("Request request.getMethod()");
 
-		if ( request.getMethod().equals("OPTIONS") ) {
-			resp.setStatus(HttpServletResponse.SC_OK);
-			return;
-		}
-		chain.doFilter(request, servletRresponse);
+	    HttpServletResponse resp = (HttpServletResponse) servletRresponse;
+	    resp.addHeader("Access-Control-Allow-Origin","*");
+	    resp.addHeader("Access-Control-Allow-Methods","GET,POST");
+	    resp.addHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+
+	    if ( request.getMethod().equals("OPTIONS") ) {
+	        resp.setStatus(HttpServletResponse.SC_OK);
+	        return;
+	    }
+	    chain.doFilter(request, servletRresponse);
 	}
 
 	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+	public void destroy() {}
 
 }
